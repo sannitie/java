@@ -10,12 +10,15 @@ public class Info {
     private String genre;
     private int rating;
     private int duration;
+    // private String added;
 
     public Info(String title, String genre, int rating, int duration) {
         this.title = title;
         this.genre = genre;
         this.rating = rating;
         this.duration = duration;
+       // added = Time.now();
+        
     }
 
     public String getTitle() {
