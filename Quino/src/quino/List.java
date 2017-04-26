@@ -95,7 +95,7 @@ public class List {
         addToTVList(oneTVShow);
         addToHistoryMap(oneTVShow);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -103,7 +103,7 @@ public class List {
         addToTVList(twoTVShow);
         addToHistoryMap(twoTVShow);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -111,7 +111,7 @@ public class List {
         addToMovieList(oneMovie);
         addToHistoryMap(oneMovie);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -119,7 +119,7 @@ public class List {
         addToTVList(thrTVShow);
         addToHistoryMap(thrTVShow);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -127,7 +127,7 @@ public class List {
         addToTVList(fouTVShow);
         addToHistoryMap(fouTVShow);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -135,7 +135,7 @@ public class List {
         addToMovieList(twoMovie);
         addToHistoryMap(twoMovie);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -143,7 +143,7 @@ public class List {
         addToMovieList(thrMovie);
         addToHistoryMap(thrMovie);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -154,15 +154,21 @@ public class List {
      * Sort TVShow-list by rating. Creating a variable to momentarily hold an
      * object.
      */
-    public void sortTVShowByRating() {
-
+    public void sortTVShowByRatingAndPrint() {
+        TVShow temp = null;
+        for (int i = 0; i < tvlist.size() - 1; i++) {
+            for (int j = i + 1; j < tvlist.size(); j++){
+                if (tvlist.get(i).getRating() > tvlist.get(j).getRating()) {
+                    temp = tvlist.get(j);
+                    tvlist.add(j, tvlist.get(i));
+                    tvlist.add(i, temp);
+                    
+                }
+            
+            }
+            System.err.println(i);
+        }
+        printTVList();
     }
-
-    /**
-     * Ceate a hashmap that stores information about when TV-shows and movies
-     * were added to the lists.
-     */
-    public void createHistoryMap() {
-
-    }
+    
 }

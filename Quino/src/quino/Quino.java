@@ -18,9 +18,8 @@ public class Quino {
             oneList.printMovieList();
         } else if ("rating".equals(args[0])) {
             System.out.println("hei");
-            oneTVShow.getRating;
+            oneList.sortTVShowByRatingAndPrint();
         } else if ("history".equals(args[0])) {
-            oneList.createHistoryMap();
             oneList.printHistoryMap();
         }
     }
