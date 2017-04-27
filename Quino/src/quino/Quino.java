@@ -1,6 +1,5 @@
 package quino;
 
-import java.util.Date;
 /**
  *
  * @author snorr
@@ -9,6 +8,17 @@ public class Quino {
 
     /**
      * @param args the command line arguments
+     * // Creates a new list object, creates 4 TV show objects and 3 movies objects
+     * // and puts them in 2 different array lists.
+     * Available parameters are:
+     * "date": Prints out both array lists in the original order.
+     * "rating": Prints out both array lists sorted by rating.
+     * "history": Prints out the hash map showing what dates each object was added
+     * to their respective lists.
+     * "tvsearch" checks if a TV show is in the array list tvlist. This needs
+     * another parameter that you want to search for.
+     * "moviesearch" checks if a movie is in the array list movielist. This needs
+     * another parameter that you want to search for.
      */
     public static void main(String[] args) {
         List oneList = new List();
@@ -17,10 +27,13 @@ public class Quino {
             oneList.printTVList();
             oneList.printMovieList();
         } else if ("rating".equals(args[0])) {
-            System.out.println("hei");
-            oneList.sortTVShowByRatingAndPrint();
+            oneList.sortByRatingAndPrint();
         } else if ("history".equals(args[0])) {
             oneList.printHistoryMap();
+        } else if ("tvsearch".equals(args[0])) {
+            oneList.searchForTVShow(args[1]);
+        } else if ("moviesearch".equals(args[0])) {
+            oneList.searchForMovie(args[1]);
         }
     }
 }

@@ -38,8 +38,8 @@ public class List {
     }
 
     /**
-     * Add the current date and time to the key in the history map.
-     * Add a TVShow or movie to the value in the history map.
+     * Add the current date and time to the key in the history map. Add a TVShow
+     * or movie to the value in the history map.
      */
     public void addToHistoryMap(Info newInfo) {
         Date date = new Date(System.currentTimeMillis());
@@ -50,7 +50,6 @@ public class List {
      * Prints out a list of all TV-shows and all information about each TV-show.
      */
     public void printTVList() {
-        System.out.println("All TV-shows sorted by date added:");
         for (TVShow tvshow : tvlist) {
             tvshow.printInfo();
             System.out.println("");
@@ -62,7 +61,6 @@ public class List {
      * Prints out a list of all movies and all information about each movie.
      */
     public void printMovieList() {
-        System.out.println("All movies sorted by date added:");
         for (Movie movie : movielist) {
             movie.printInfo();
             System.out.println("");
@@ -85,9 +83,9 @@ public class List {
     }
 
     /**
-     * Create objects to help simulate running the program.
-     * CREATE A LOOP THAT ADDS EACH OBJECT TO THEIR RESPECTIVE LIST AND ALSO ADDS EACH
-     * OBJECT TO THE HISTORY MAP.
+     * Create objects to help simulate running the program. CREATE A LOOP THAT
+     * ADDS EACH OBJECT TO THEIR RESPECTIVE LIST AND ALSO ADDS EACH OBJECT TO
+     * THE HISTORY MAP.
      */
     public void createObjects() {
 
@@ -95,7 +93,7 @@ public class List {
         addToTVList(oneTVShow);
         addToHistoryMap(oneTVShow);
         try {
-            Thread.sleep(1);
+            Thread.sleep(1000);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -103,7 +101,7 @@ public class List {
         addToTVList(twoTVShow);
         addToHistoryMap(twoTVShow);
         try {
-            Thread.sleep(1);
+            Thread.sleep(1000);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -111,7 +109,7 @@ public class List {
         addToMovieList(oneMovie);
         addToHistoryMap(oneMovie);
         try {
-            Thread.sleep(1);
+            Thread.sleep(1000);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -119,7 +117,7 @@ public class List {
         addToTVList(thrTVShow);
         addToHistoryMap(thrTVShow);
         try {
-            Thread.sleep(1);
+            Thread.sleep(1000);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -127,7 +125,7 @@ public class List {
         addToTVList(fouTVShow);
         addToHistoryMap(fouTVShow);
         try {
-            Thread.sleep(1);
+            Thread.sleep(1000);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -135,7 +133,7 @@ public class List {
         addToMovieList(twoMovie);
         addToHistoryMap(twoMovie);
         try {
-            Thread.sleep(1);
+            Thread.sleep(1000);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -143,7 +141,7 @@ public class List {
         addToMovieList(thrMovie);
         addToHistoryMap(thrMovie);
         try {
-            Thread.sleep(1);
+            Thread.sleep(1000);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -151,24 +149,142 @@ public class List {
     }
 
     /**
-     * Sort TVShow-list by rating. Creating a variable to momentarily hold an
-     * object.
+     * Sort by rating 1.0
      */
-    public void sortTVShowByRatingAndPrint() {
+    public void sortTVShowByRatingAndPrintX() {
         TVShow temp = null;
         for (int i = 0; i < tvlist.size() - 1; i++) {
-            for (int j = i + 1; j < tvlist.size(); j++){
+            for (int j = i + 1; j < tvlist.size(); j++) {
                 if (tvlist.get(i).getRating() > tvlist.get(j).getRating()) {
-                    temp = tvlist.get(j);
-                    tvlist.add(j, tvlist.get(i));
-                    tvlist.add(i, temp);
-                    
+                    temp = tvlist.get(i);
+                    tvlist.add(i, tvlist.get(j));
+                    tvlist.add(j, temp);
                 }
-            
             }
-            System.err.println(i);
+            System.out.println(i);
         }
         printTVList();
     }
+
+    public void t() {
+        System.out.println(tvlist.get(0).getRating());
+    }
+
+    /**
+     * Sort by rating 1.1
+     */
+    public void sortTVShowByRatingAndPrintXX() {
+        Iterator<TVShow> it = tvlist.iterator();
+        int i = 0;
+        TVShow temp = null;
+        while (it.hasNext()) {
+            if (tvlist.get(i).getRating() > tvlist.get(i + 1).getRating()) {
+                temp = tvlist.get(i);
+                tvlist.add(i, tvlist.get(i + 1));
+                tvlist.add(i + 1, temp);
+            }
+            TVShow tvlist = it.next();
+        }
+        printTVList();
+    }
+
+    /**
+     * A loop that sorts all the TV shows by rating (descending) and calls the
+     * printTVList to print out all the TV shows in the ArrayList tvlist.
+     */
+    public void sortTVShowByRatingAndPrint() {
+        ArrayList<TVShow> templist = new ArrayList<>();
+        TVShow temp = tvlist.get(0);
+        int i = 0;
+        while (tvlist.size() > 1) {
+            if (tvlist.get(i).getRating() > temp.getRating()) {
+                temp = tvlist.get(i);
+            }
+            i++;
+            if (i > tvlist.size() - 1) {
+                i = 0;
+                templist.add(temp);
+                tvlist.remove(temp);
+
+                temp = tvlist.get(0);
+            }
+        }
+        templist.add(temp);
+        tvlist = (ArrayList<TVShow>) templist.clone();
+        System.out.println("All TV-shows sorted by rating:");
+        System.out.println("");
+        printTVList();
+    }
+
+    /**
+     * A loop that sorts all the movies by rating (descending) and calls the
+     * printMovieList to print out all the movies in the ArrayList movielist.
+     */
+    public void sortMovieByRatingAndPrint() {
+        ArrayList<Movie> templist = new ArrayList<>();
+        Movie temp = movielist.get(0);
+        int i = 0;
+        while (movielist.size() > 1) {
+            if (movielist.get(i).getRating() > temp.getRating()) {
+                temp = movielist.get(i);
+            }
+            i++;
+            if (i > movielist.size() - 1) {
+                i = 0;
+                templist.add(temp);
+                movielist.remove(temp);
+
+                temp = movielist.get(0);
+            }
+        }
+        templist.add(temp);
+        movielist = (ArrayList<Movie>) templist.clone();
+        System.out.println("All movies sorted by rating:");
+        System.out.println("");
+        printMovieList();
+    }
     
+    // Sorting both TV shows and movies by rating.
+    public void sortByRatingAndPrint() {
+        sortTVShowByRatingAndPrint();
+        sortMovieByRatingAndPrint();
+    }
+    
+    // PARAMETER TAR BARE ETT ORD.
+    /**
+     * Search for a TV show in the array list tvlist.
+     * @param wanted the title you want to search for.
+     */
+    public void searchForTVShow(String wanted) {
+        int i = 0;
+        boolean found = false;
+        Iterator<TVShow> it = tvlist.iterator();
+        while (it.hasNext() && !found) {
+            it.next();
+            if (tvlist.get(i).getTitle().equalsIgnoreCase(wanted)) {
+                found = true;
+            }
+            i++;
+        }
+        System.out.println(wanted + " is in the list.");
+    }
+    
+    // PARAMETER TAR BARE ETT ORD.
+     /**
+     * Search for a movie in the array list movielist.
+     * @param wanted the title you want to search for.
+     */
+    public void searchForMovie(String wanted) {
+        int i = 0;
+        boolean found = false;
+        Iterator<Movie> it = movielist.iterator();
+        while (it.hasNext() && !found) {
+            it.next();
+            if (movielist.get(i).getTitle().equalsIgnoreCase(wanted)) {
+                found = true;
+            }
+            i++;
+        }
+        System.out.println(wanted + " is in the list.");
+    }
 }
