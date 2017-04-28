@@ -166,10 +166,6 @@ public class List {
         printTVList();
     }
 
-    public void t() {
-        System.out.println(tvlist.get(0).getRating());
-    }
-
     /**
      * Sort by rating 1.1
      */
@@ -243,48 +239,60 @@ public class List {
         System.out.println("");
         printMovieList();
     }
-    
+
     // Sorting both TV shows and movies by rating.
     public void sortByRatingAndPrint() {
         sortTVShowByRatingAndPrint();
         sortMovieByRatingAndPrint();
     }
-    
-    // PARAMETER TAR BARE ETT ORD.
+
     /**
      * Search for a TV show in the array list tvlist.
+     *
      * @param wanted the title you want to search for.
      */
     public void searchForTVShow(String wanted) {
         int i = 0;
         boolean found = false;
+        String plustospace = "";
+        String spacetoplus = "";
         Iterator<TVShow> it = tvlist.iterator();
         while (it.hasNext() && !found) {
-            it.next();
-            if (tvlist.get(i).getTitle().equalsIgnoreCase(wanted)) {
+            plustospace = tvlist.get(i).getTitle().replace(' ', '+');
+            if (plustospace.equalsIgnoreCase(wanted)) {
                 found = true;
             }
             i++;
+            it.next();
         }
-        System.out.println(wanted + " is in the list.");
+        spacetoplus = plustospace.replace('+', ' ');
+        System.out.println(spacetoplus + " is in the list.");
     }
-    
-    // PARAMETER TAR BARE ETT ORD.
-     /**
+
+    /**
      * Search for a movie in the array list movielist.
+     *
      * @param wanted the title you want to search for.
      */
     public void searchForMovie(String wanted) {
         int i = 0;
         boolean found = false;
+        String plustospace = "";
+        String spacetoplus = "";
         Iterator<Movie> it = movielist.iterator();
         while (it.hasNext() && !found) {
-            it.next();
-            if (movielist.get(i).getTitle().equalsIgnoreCase(wanted)) {
+            plustospace = movielist.get(i).getTitle().replace(' ', '+');
+            if (plustospace.equalsIgnoreCase(wanted)) {
                 found = true;
             }
             i++;
+            it.next();
         }
-        System.out.println(wanted + " is in the list.");
+        spacetoplus = plustospace.replace('+', ' ');
+        if (wanted.equals(spacetoplus)) {
+            System.out.println(spacetoplus + " is in the list.");
+        } else {
+            System.err.println("Error!");
+        }
     }
 }
