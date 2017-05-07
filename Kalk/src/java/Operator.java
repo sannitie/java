@@ -31,18 +31,7 @@ public class Operator extends HttpServlet {
             
         try (PrintWriter out = res.getWriter()) {
             out.println(k);
-            /*
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet NewServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>" + k + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-           // out.println(k);
-             */
+
         }
 
     }

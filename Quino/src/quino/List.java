@@ -148,41 +148,6 @@ public class List {
 
     }
 
-    /**
-     * Sort by rating 1.0
-     */
-    public void sortTVShowByRatingAndPrintX() {
-        TVShow temp = null;
-        for (int i = 0; i < tvlist.size() - 1; i++) {
-            for (int j = i + 1; j < tvlist.size(); j++) {
-                if (tvlist.get(i).getRating() > tvlist.get(j).getRating()) {
-                    temp = tvlist.get(i);
-                    tvlist.add(i, tvlist.get(j));
-                    tvlist.add(j, temp);
-                }
-            }
-            System.out.println(i);
-        }
-        printTVList();
-    }
-
-    /**
-     * Sort by rating 1.1
-     */
-    public void sortTVShowByRatingAndPrintXX() {
-        Iterator<TVShow> it = tvlist.iterator();
-        int i = 0;
-        TVShow temp = null;
-        while (it.hasNext()) {
-            if (tvlist.get(i).getRating() > tvlist.get(i + 1).getRating()) {
-                temp = tvlist.get(i);
-                tvlist.add(i, tvlist.get(i + 1));
-                tvlist.add(i + 1, temp);
-            }
-            TVShow tvlist = it.next();
-        }
-        printTVList();
-    }
 
     /**
      * A loop that sorts all the TV shows by rating (descending) and calls the
@@ -248,8 +213,7 @@ public class List {
 
     /**
      * Search for a TV show in the array list tvlist.
-     *
-     * @param wanted the title you want to search for.
+     * @param wanted The title you want to search for.
      */
     public void searchForTVShow(String wanted) {
         int i = 0;
@@ -271,8 +235,7 @@ public class List {
 
     /**
      * Search for a movie in the array list movielist.
-     *
-     * @param wanted the title you want to search for.
+     * @param wanted The title you want to search for.
      */
     public void searchForMovie(String wanted) {
         int i = 0;

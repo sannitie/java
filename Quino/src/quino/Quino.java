@@ -8,8 +8,6 @@ public class Quino {
 
     /**
      * @param args the command line arguments
-     * // Creates a new list object, creates 4 TV show objects and 3 movies objects
-     * // and puts them in 2 different array lists.
      * Available parameters are:
      * "date": Prints out both array lists in the original order.
      * "rating": Prints out both array lists sorted by rating.

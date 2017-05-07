@@ -25,7 +25,7 @@ public class TVShow extends Info {
         return episodes;
     }
 
-    public boolean isStillrunning() {
+    public boolean getStillrunning() {
         return stillrunning;
     }
 
@@ -42,7 +42,8 @@ public class TVShow extends Info {
     }
 
     /**
-     * Print the context of all fields.
+     * Print the context of all fields in this class and the superclass.
+     * @override
      */
     public void printInfo() {
         super.printInfo();
