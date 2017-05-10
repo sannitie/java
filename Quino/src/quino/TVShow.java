@@ -1,8 +1,10 @@
 package quino;
 
 /**
- *
+ * A class that extends the class Info and that has a few more fields and one method.
+ * 
  * @author snorr
+ * @version 1.0
  */
 public class TVShow extends Info {
 

@@ -7,19 +7,21 @@ import java.util.Map;
 import java.util.Date;
 
 /**
- *
+ * A class that handles the arrayslists and hashmap and does things with them.
+ * 
  * @author snorr
+ * @version 1.0
  */
 public class List {
 
     private ArrayList<TVShow> tvlist;
     private ArrayList<Movie> movielist;
-    private HashMap<Date, Info> historyMap;
+    private HashMap<Date, Info> historymap;
 
     public List() {
         tvlist = new ArrayList<>();
         movielist = new ArrayList<>();
-        historyMap = new HashMap<>();
+        historymap = new HashMap<>();
 
     }
 
@@ -40,10 +42,11 @@ public class List {
     /**
      * Add the current date and time to the key in the history map. Add a TVShow
      * or movie to the value in the history map.
+     * @param newInfo The object that is getting added to the map.
      */
     public void addToHistoryMap(Info newInfo) {
         Date date = new Date(System.currentTimeMillis());
-        historyMap.put(date, newInfo);
+        historymap.put(date, newInfo);
     }
 
     /**
@@ -67,25 +70,22 @@ public class List {
         }
         System.out.println("");
     }
-
+    
     /**
-     * Prints out the historymap.
+     * Prints out the historymap. Note that the dates are not in order. That
+     * would require something else like a TreeMap.
      */
-    public void printHistoryMap() {
-        int index = 1;
-        for (Iterator it = historyMap.entrySet().iterator(); it.hasNext();) {
-            Map.Entry map = (Map.Entry) it.next();
-            System.out.print(index + ": Date added: " + map.getKey());
-            Info x = (Info) map.getValue();
-            System.out.println(" - " + x.getTitle());
-            index++;
+    public void printHistoryMap () {
+        for (Date date: historymap.keySet()) {
+            
+            String value = historymap.get(date).getTitle();
+            System.out.println(date + " - " + value);
         }
     }
+    
 
     /**
-     * Create objects to help simulate running the program. CREATE A LOOP THAT
-     * ADDS EACH OBJECT TO THEIR RESPECTIVE LIST AND ALSO ADDS EACH OBJECT TO
-     * THE HISTORY MAP.
+     * Create objects to help simulate running the program. 
      */
     public void createObjects() {
 
@@ -147,7 +147,6 @@ public class List {
         }
 
     }
-
 
     /**
      * A loop that sorts all the TV shows by rating (descending) and calls the
@@ -259,3 +258,27 @@ public class List {
         }
     }
 }
+
+/*
+    public void printHistoryMap1() {
+        int i = 1;
+        for (Iterator it = historymap.entrySet().iterator(); it.hasNext();) {
+            Map.Entry map = (Map.Entry) it.next();
+            System.out.print(i + ": Date added: " + map.getKey());
+            Info x = (Info) map.getValue();
+            System.out.println(" - " + x.getTitle());
+            i++;
+        }
+    }
+*/
+
+/*
+    public void printHistoryMap () {
+        for (Date date: historymap.keySet()) {
+            
+            String key = date.toString();
+            String value = historymap.get(date).getTitle();
+            System.out.println(key + " - " + value);
+        }
+    }
+*/

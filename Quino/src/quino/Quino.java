@@ -1,8 +1,10 @@
 package quino;
 
 /**
- *
+ * The main class for this project.
+ * 
  * @author snorr
+ * @version 1.0
  */
 public class Quino {
 
@@ -35,3 +37,5 @@ public class Quino {
         }
     }
 }
+
+// https://netbeans.org/kb/docs/java/quickstart-gui.html

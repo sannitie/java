@@ -1,8 +1,10 @@
 package quino;
 
 /**
- *
+ * The superclass that stores general information about both movies and TV shows.
+ * 
  * @author snorr
+ * @version 1.0
  */
 public class Info {
 
