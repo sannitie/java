@@ -20,17 +20,6 @@ public class Servlet extends HttpServlet {
         List oneList = new List();
         ArrayList<Info> list = oneList.getArraylist();
 
-        /*
-        public void printTVList() {
-        for (Info tvshow : arraylist) {
-            if (tvshow instanceof TVShow) {
-                tvshow.printInfo();
-                System.out.println("");
-            }
-        }
-        System.out.println("");
-    }
-         */
         try (PrintWriter out = res.getWriter()) {
             
             out.println("TV Shows: \n");
