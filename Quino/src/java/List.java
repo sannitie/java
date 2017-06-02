@@ -4,16 +4,11 @@
  * and open the template in the editor.
  */
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -31,23 +26,11 @@ public class List extends HttpServlet {
     public List() {
         arraylist = new ArrayList<>();
         historymap = new HashMap<>();
+        createObjects();
     }
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        String operator = " ";
-    }
-
-    /**
-     * Add a TVShow to the TVList.
+     * Add a TVShow to the arrayList.
      */
     public void addToList(Info newInfo) {
         arraylist.add(newInfo);
@@ -62,6 +45,29 @@ public class List extends HttpServlet {
     public void addToHistoryMap(Info newInfo) {
         Date date = new Date(System.currentTimeMillis());
         historymap.put(newInfo, date);
+    }
+
+    public String test() {
+        String x = "hei";
+        return x;
+    }
+    /*
+    public int test2() {
+        for (Info tvshow : arraylist) {
+            if (tvshow instanceof TVShow) {
+                int x = tvshow.getDuration();
+                return x;
+            }
+        }
+    }
+    */
+    
+    public ArrayList<Info> getArraylist() {
+        return arraylist;
+    }
+
+    public HashMap<Info, Date> getHistorymap() {
+        return historymap;
     }
 
     /**
@@ -96,7 +102,7 @@ public class List extends HttpServlet {
         addToList(oneTVShow);
         addToHistoryMap(oneTVShow);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -104,7 +110,7 @@ public class List extends HttpServlet {
         addToList(twoTVShow);
         addToHistoryMap(twoTVShow);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -112,7 +118,7 @@ public class List extends HttpServlet {
         addToList(oneMovie);
         addToHistoryMap(oneMovie);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -120,7 +126,7 @@ public class List extends HttpServlet {
         addToList(thrTVShow);
         addToHistoryMap(thrTVShow);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -128,7 +134,7 @@ public class List extends HttpServlet {
         addToList(fouTVShow);
         addToHistoryMap(fouTVShow);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -136,7 +142,7 @@ public class List extends HttpServlet {
         addToList(twoMovie);
         addToHistoryMap(twoMovie);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -144,7 +150,7 @@ public class List extends HttpServlet {
         addToList(thrMovie);
         addToHistoryMap(thrMovie);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
