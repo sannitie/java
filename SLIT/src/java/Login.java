@@ -42,7 +42,7 @@ public class Login extends HttpServlet {
         boolean unamesuccess = userManager.usernameCompare(input1);
         boolean passwordsuccsess = userManager.passwordCompare(input2);
         if (unamesuccess && passwordsuccsess) {
-            out.println("Login successfull");
+            out.println("You're logged in! xD");
         } else {
             out.println("Login failed");
 
