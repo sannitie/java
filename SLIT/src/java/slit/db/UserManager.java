@@ -2,7 +2,7 @@ package slit.db;
 
 import java.util.List;
 import javax.ejb.Local;
-import slit.db.User;
+import slit.db.Users;
 
 
 /**

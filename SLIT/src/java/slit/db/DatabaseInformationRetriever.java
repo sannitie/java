@@ -37,13 +37,35 @@ public class DatabaseInformationRetriever implements UserManager {
             }
 
             return condition;
-        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException t) {
+        } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
     @Override
     public boolean passwordCompare(String password) {
-        return false;
+        boolean condition = true;
+        try {
+            // 0. Register MySQL driver class
+            DriverManager.registerDriver((java.sql.Driver) Class.forName("com.mysql.jdbc.Driver").newInstance());
+
+            // 1. Get a connection to database.
+            Connection myConn = DriverManager.getConnection("jdbc:mysql://201db.gnorli.no:3306/sslit?autoReconnect=true&useSSL=false", "Snorre", "Mongoper!");
+
+            // 2. Create a statement.
+            Statement myStmt = myConn.createStatement();
+
+            // 3. Execute a SQL query.
+            ResultSet myRs = myStmt.executeQuery("select * from user");
+
+            // 4. Process the result set.
+            while (myRs.next()) {
+                condition = myRs.getString("password").equals(password);
+            }
+
+            return condition;
+        } catch (Throwable t) {
+            throw new RuntimeException(t);
+        }
     }
 }

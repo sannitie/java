@@ -37,9 +37,11 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String inputuname = request.getParameter("uname");
-        boolean success = userManager.usernameCompare(inputuname);
-        if (success) {
+        String input1 = request.getParameter("uname");
+        String input2 = request.getParameter("pass");
+        boolean unamesuccess = userManager.usernameCompare(input1);
+        boolean passwordsuccsess = userManager.passwordCompare(input2);
+        if (unamesuccess && passwordsuccsess) {
             out.println("Login successfull");
         } else {
             out.println("Login failed");

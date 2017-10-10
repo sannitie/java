@@ -17,18 +17,18 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class User implements Serializable {
+public class Users implements Serializable {
     
     @Id
     private String username;
     private String password;
 
     
-    public User() {
+    public Users() {
         
     }
     
-    public User(String username, String password) {
+    public Users(String username, String password) {
         this.password = password;
         this.username = username;
     
