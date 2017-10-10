@@ -13,6 +13,11 @@ import slit.db.User;
 public interface UserManager
 {
 
+    boolean usernameCompare(String username);
+    
+    boolean passwordCompare(String password);
+    
+    /*
     void insert(User module);
 
     User find(Object pk);
@@ -22,4 +27,5 @@ public interface UserManager
     void update(User module);
 
     void delete(User module);
+*/
 }

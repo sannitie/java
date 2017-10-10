@@ -6,13 +6,13 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.hsqldb.dbinfo.DatabaseInformation;
-import slit.db.DatabaseInformationRetriever;
+import slit.db.UserManager;
 
 /**
  *
@@ -20,6 +20,9 @@ import slit.db.DatabaseInformationRetriever;
  */
 @WebServlet(urlPatterns = {"/Login"})
 public class Login extends HttpServlet {
+
+    @EJB
+    private UserManager userManager;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,8 +38,7 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String inputuname = request.getParameter("uname");
-        DatabaseInformationRetriever myDbIR = new DatabaseInformationRetriever();
-        boolean success = myDbIR.usernameComparer(inputuname);
+        boolean success = userManager.usernameCompare(inputuname);
         if (success) {
             out.println("Login successfull");
         } else {

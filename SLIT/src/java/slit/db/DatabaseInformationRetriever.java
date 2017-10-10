@@ -6,14 +6,17 @@ package slit.db;
  * and open the template in the editor.
  */
 import java.sql.*;
+import javax.ejb.Stateless;
 
-public class DatabaseInformationRetriever {
+@Stateless
+public class DatabaseInformationRetriever implements UserManager {
 
     public DatabaseInformationRetriever() {
 
     }
 
-    public boolean usernameComparer(String username) {
+    @Override
+    public boolean usernameCompare(String username) {
         boolean condition = true;
         try {
             // 0. Register MySQL driver class
@@ -30,16 +33,17 @@ public class DatabaseInformationRetriever {
 
             // 4. Process the result set.
             while (myRs.next()) {
-                if (myRs.getString("username").equals(username)) {
-                    condition = true;
-                } else {
-                    condition = false;
-                }
+                condition = myRs.getString("username").equals(username);
             }
 
             return condition;
-        } catch (Throwable t) {
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException t) {
             throw new RuntimeException(t);
         }
+    }
+
+    @Override
+    public boolean passwordCompare(String password) {
+        return false;
     }
 }
