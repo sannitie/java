@@ -126,11 +126,11 @@ public class Game {
             while (scanner.hasNextInt()) {
                 choseDice(myInt);
             }
-            if (scanner.hasNext) {
+            //if (scanner.hasNext) {
                 
             }
             checkForMultiples();
             checkForSingleDouble();
         }
     }
-}
+//}

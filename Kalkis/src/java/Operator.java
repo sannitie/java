@@ -17,7 +17,7 @@ public class Operator extends HttpServlet {
         String operator = " ";
         int i = Integer.parseInt(req.getParameter("t1"));
         int j = Integer.parseInt(req.getParameter("t2"));
-        operator = req.getParameter("operaor");
+        operator = req.getParameter("operator");
         int k = 0;
         if (operator.contains("+")) {
             k = i + j;
