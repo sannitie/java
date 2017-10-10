@@ -9,6 +9,8 @@ import slit.db.Users;
  *
  * @author evenal
  */
+
+// Jeg er en bønne hehe
 @Local
 public interface UserManager
 {
